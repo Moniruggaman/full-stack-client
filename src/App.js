@@ -50,7 +50,7 @@ function App() {
         <PrivateRoute path="/admin">
           <Admin></Admin>
         </PrivateRoute> 
-        <Route path="/order">
+        <Route path="/check/:check_id">
           <CheckOut></CheckOut>
         </Route>
         <Route path="/ordered">

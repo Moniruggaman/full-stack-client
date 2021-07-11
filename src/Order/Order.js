@@ -1,17 +1,18 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Table } from 'react-bootstrap';
-import { useHistory, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const Order = () => {
 
     const [order, setOrder] = useState([]);
     const { _id } = useParams();
-    const history = useHistory();
+    // const history = useHistory();
 
-    const handleProceedCheckout = () => {
-        history.push('/order');
-    }
+    // const handleProceedCheckout = (e) => {
+    //     e.preventDefault();
+    //     history.push('/order');
+    // }
 
     useEffect(() => {
         fetch(`http://localhost:5055/order`)
@@ -41,7 +42,7 @@ const Order = () => {
                     </tr>
                 </tbody>
             </Table>
-            <button className="btn btn-success" onClick={handleProceedCheckout}>Check out</button>
+           <Link to={`/check/${productAdded?._id}`}><button className="btn btn-success" >Check out</button></Link>
         </div>
     );
 };

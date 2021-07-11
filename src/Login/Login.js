@@ -43,10 +43,10 @@ const Login = () => {
     const authToken = () => {
       firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
         .then(function (idToken) {
-          console.log(idToken);
+          // console.log(idToken);
           sessionStorage.setItem('authToken', idToken) 
         }).catch(function (error) {
-          
+
         });
     }
   }
