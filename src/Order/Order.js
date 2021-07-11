@@ -7,13 +7,7 @@ const Order = () => {
 
     const [order, setOrder] = useState([]);
     const { _id } = useParams();
-    // const history = useHistory();
-
-    // const handleProceedCheckout = (e) => {
-    //     e.preventDefault();
-    //     history.push('/order');
-    // }
-
+   
     useEffect(() => {
         fetch(`http://localhost:5055/order`)
             .then(res => res.json())
