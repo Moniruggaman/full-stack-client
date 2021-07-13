@@ -2,6 +2,8 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { Table } from 'react-bootstrap';
 import { Link, useParams } from 'react-router-dom';
+import *as FaIcons from 'react-icons/fa';
+
 
 const Order = () => {
 
@@ -36,7 +38,7 @@ const Order = () => {
                     </tr>
                 </tbody>
             </Table>
-           <Link to={`/check/${productAdded?._id}`}><button className="btn btn-success" >Check out</button></Link>
+           <Link to={`/check/${productAdded?._id}`}><button className="btn btn-success" ><FaIcons.FaCartPlus/> Check out</button></Link>
         </div>
     );
 };

@@ -28,7 +28,7 @@ const OrderDetail = () => {
             {
                 ordered.map(pd => <div className="order-cart" key={pd._id} product={pd}>
                     <Card style={{ width: '18rem', background: '#eee' }} className="px-2">
-                        <Card.Img variant="top" src={pd.product.imageURL} />
+                        <Card.Img variant="top" style={{height: '50%'}} src={pd.product.imageURL} />
                         <Card.Body>
                             <Card.Text>
                                 <p><b> Customer Name:</b> {pd.shipment.name}</p>
