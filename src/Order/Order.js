@@ -9,7 +9,7 @@ const Order = () => {
     const { _id } = useParams();
    
     useEffect(() => {
-        fetch(`http://localhost:5055/order`)
+        fetch(`https://click-valley.herokuapp.com/order`)
             .then(res => res.json())
             .then(data => setOrder(data))
     }, [])

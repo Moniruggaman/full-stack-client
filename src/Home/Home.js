@@ -8,35 +8,35 @@ import { useHistory } from 'react-router-dom';
 
 const Home = () => {
 
-    const [products, setProducts] = useState([]);   
-    
+    const [products, setProducts] = useState([]);
+
     const [order, setOrder] = useState({});
-    
+
     useEffect(() => {
-        fetch(`http://localhost:5055/products`)
+        fetch(`https://click-valley.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setProducts(data))
 
     }, [])
 
     const history = useHistory();
-    
-     function handleBook(id){
-        fetch(`http://localhost:5055/order/${id}`)
-        .then(res => res.json())
-        .then(data => {
-            setOrder(data);
-            history.push(`/order/${id}`);
-        })
+
+    function handleBook(id) {
+        fetch(`https://click-valley.herokuapp.com/order/${id}`)
+            .then(res => res.json())
+            .then(data => {
+                setOrder(data);
+                history.push(`/order/${id}`);
+            })
     }
 
     return (
 
-        <div className="product-card">
+        <div className="product-card mt-4">
             {
                 products.map(pd => <div className="product-card" key={pd._id}
                     product={pd} >
-                    <Card style={{ width: '18rem' }} >
+                    <Card style={{ width: '18rem', background: '#eee' }} >
                         <Card.Img variant="top" src={pd.imageURL} />
                         <Card.Body>
                             <Card.Title>{pd.name}</Card.Title>

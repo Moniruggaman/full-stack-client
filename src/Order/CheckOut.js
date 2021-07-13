@@ -11,7 +11,7 @@ const CheckOut = () => {
     const [order, setOrder] = useState([]);
 
     useEffect(() => {
-        fetch(`http://localhost:5055/products`)
+        fetch(`https://click-valley.herokuapp.com/products`)
             .then(res => res.json())
             .then(data => setOrder(data))
 
@@ -21,7 +21,7 @@ const CheckOut = () => {
 
     const onSubmit = data => {
         const orderDetails = { ...loggedInUser, product: productFind, shipment: data, orderTime: new Date() };
-        const url = `http://localhost:5055/addOrder`
+        const url = `https://click-valley.herokuapp.com/addOrder`
         fetch(url, {
             method: 'POST',
             headers: {

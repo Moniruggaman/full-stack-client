@@ -53,9 +53,9 @@ function App() {
         <Route path="/check/:check_id">
           <CheckOut></CheckOut>
         </Route>
-        <Route path="/ordered">
+        <PrivateRoute path="/ordered">
           <OrderDetail></OrderDetail>
-        </Route>
+        </PrivateRoute>
 
       </Switch>
   </Router>

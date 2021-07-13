@@ -6,26 +6,26 @@ import { Table } from 'react-bootstrap';
 const Inventory = () => {
 
     const [products, setProducts] = useState([]);
-    
+
     useEffect(() => {
-        fetch(`http://localhost:5055/Inventory`)
+        fetch(`https://click-valley.herokuapp.com/Inventory`)
             .then(res => res.json())
             .then(data => setProducts(data))
     }, [])
 
-    function deleteProduct(id){
-        fetch(`http://localhost:5055/delete/${id}`, {
+    function deleteProduct(id) {
+        fetch(`https://click-valley.herokuapp.com/delete/${id}`, {
             method: 'DELETE'
         })
-        .then(res => res.json())
-    .then(result => {
-        console.log('deleted successfully', result);
-    })
+            .then(res => res.json())
+            .then(result => {
+                console.log('deleted successfully', result);
+            })
 
-        
+
     }
     return (
-        <div className="container w-100 table-responsive" style={{ maxWidth: '800px', margin: '0 auto'}}>
+        <div className="container w-100 table-responsive" style={{ maxWidth: '800px', margin: '0 auto' }}>
             <h3> Product Inventory</h3>
             <Table striped bordered hover>
                 <thead>
@@ -38,15 +38,17 @@ const Inventory = () => {
             </Table>
             {
                 products.map(product => (
-                    <Table striped bordered hover key={product._id}>
-                        <tbody>
-                            <tr>
-                                <td >{product.name}</td>
-                                <td >{product.price}</td>
-                                <td ><button onClick={() =>deleteProduct(`${product._id}`)}>Delete</button></td>
-                            </tr>
-                        </tbody>
-                    </Table>
+                    <div key={product._id}>
+                        <Table striped bordered hover size="sm" >
+                            <tbody>
+                                <tr>
+                                    <td >{product.name}</td>
+                                    <td >{product.price}</td>
+                                    <td ><button onClick={() => deleteProduct(`${product._id}`)}>Delete</button></td>
+                                </tr>
+                            </tbody>
+                        </Table>
+                    </div>
 
                 ))
             }

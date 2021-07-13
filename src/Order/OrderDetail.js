@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { Card } from 'react-bootstrap';
 import { UserContext } from '../App';
+import './OrderDetail.css';
 
 const OrderDetail = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
@@ -8,7 +9,7 @@ const OrderDetail = () => {
     console.log(ordered);
 
     useEffect(() => {
-        fetch(`http://localhost:5055/ordered?email=` + loggedInUser.email, {
+        fetch(`https://click-valley.herokuapp.com/ordered?email=` + loggedInUser.email, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -22,22 +23,27 @@ const OrderDetail = () => {
 
     return (
         <div>
-            <h4>Product ordered by the customers.</h4>
+            <h4 className="text-center">Your order detail.</h4>
+            <div className="order-cart mt-4">
             {
-                ordered.map(pd => <Card style={{ width: '20rem' }} className="px-4 mr-auto" key={pd._id} product={pd}>
-                    <Card.Img variant="top" src={pd.product.imageURL} />
-                    <Card.Body>
-                        <Card.Text>
-                            <p>Customer Name: {pd.shipment.name}</p>
-                            <p>Email: {pd.email}</p>
-                            <p>Address: {pd.shipment.address}</p>
-                            <p>Product Name: {pd.product.name}</p>
-                            <p>Product Price: {pd.product.price}</p>
-                            <p>Ordered Quantity: {pd.product.quantity}</p>
-                        </Card.Text>
-                    </Card.Body>
-                </Card>)
+                ordered.map(pd => <div className="order-cart" key={pd._id} product={pd}>
+                    <Card style={{ width: '18rem', background: '#eee' }} className="px-2">
+                        <Card.Img variant="top" src={pd.product.imageURL} />
+                        <Card.Body>
+                            <Card.Text>
+                                <p><b> Customer Name:</b> {pd.shipment.name}</p>
+                                <p><b>Email:</b> {pd.email}</p>
+                                <p><b>Address:</b> {pd.shipment.address}</p>
+                                <p><b>Product Name:</b> {pd.product.name}</p>
+                                <p><b>Product Price:</b>{pd.product.price}</p>
+                                <p><b>Ordered Quantity:</b> {pd.product.quantity}</p>
+                                <p><b>Order Time:</b> {pd.orderTime}</p>
+                            </Card.Text>
+                        </Card.Body>
+                    </Card>
+                </div>)
             }
+            </div>
         </div>
     );
 };

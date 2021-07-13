@@ -18,7 +18,7 @@ const AddProducts = () => {
         };
         console.log(productData);
         const newProduct = { ...productData };
-        const url = `http://localhost:5055/addProducts`
+        const url = `https://click-valley.herokuapp.com/addProducts`
         fetch(url, {
             method: 'POST',
             headers: {
