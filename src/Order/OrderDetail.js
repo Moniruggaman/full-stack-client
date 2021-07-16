@@ -6,8 +6,7 @@ import './OrderDetail.css';
 const OrderDetail = () => {
     const [loggedInUser, setLoggedInUser] = useContext(UserContext);
     const [ordered, setOrdered] = useState([]);
-    console.log(ordered);
-
+   
     useEffect(() => {
         fetch(`https://click-valley.herokuapp.com/ordered?email=` + loggedInUser.email, {
             method: 'GET',
