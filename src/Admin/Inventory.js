@@ -14,15 +14,13 @@ const Inventory = () => {
             .then(data => setProducts(data))
     }, [])
 
-    function deleteProduct(event, id) {
+    function deleteProduct(id) {
         fetch(`https://click-valley.herokuapp.com/delete/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
             .then(result => {
-                if(result){
-                    event.target.parentNode.style.display = 'none'
-                }
+                console.log(result);
             })
 
 
@@ -46,7 +44,7 @@ const Inventory = () => {
                                 <th scope="row">{index = index + 1}</th>
                                 <td>{product.name}</td>
                                 <td>{product.price}</td>
-                                <td><button class="btn btn-danger" onClick={() => deleteProduct(`event, ${product._id}`)}><FaIcons.FaTrash /> Delete</button></td>
+                                <td><button class="btn btn-danger" onClick={() => deleteProduct(`${product._id}`)}><FaIcons.FaTrash /> Delete</button></td>
                             </tr>
                         )
                     }
